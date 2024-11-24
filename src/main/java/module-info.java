@@ -1,6 +1,7 @@
 module org.example.demofx {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.web;
 
     requires org.controlsfx.controls;
     requires java.sql;
