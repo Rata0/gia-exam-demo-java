@@ -2,10 +2,7 @@ package org.example.demofx.dao;
 
 import org.example.demofx.model.Supplier;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,8 +39,8 @@ public final class SupplierDAO {
     }
 
     public List<Supplier> getEntities() throws SQLException {
-        var sql = "SELECT * FROM suppliers";
-        try (var stmt = connection.prepareStatement(sql)) {
+        String sql = "SELECT * FROM suppliers";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             var resultSet = stmt.executeQuery();
             var result = new ArrayList<Supplier>();
             while (resultSet.next()) {
@@ -62,4 +59,28 @@ public final class SupplierDAO {
             return result;
         }
     }
+
+    public Supplier findById(int id) throws SQLException {
+        String sql = "SELECT * FROM suppliers WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String type = resultSet.getString("type");
+                    String name = resultSet.getString("name");
+                    String director = resultSet.getString("director");
+                    String phone = resultSet.getString("phone");
+                    int rating = resultSet.getInt("rating");
+
+                    Supplier supplier = new Supplier(type, name, director, phone, rating);
+                    supplier.setId(id);
+                    return supplier;
+                } else {
+                    return null;
+                }
+            }
+        }
+    }
+
+
 }

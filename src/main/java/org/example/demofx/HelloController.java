@@ -33,15 +33,21 @@ public class HelloController {
             }
 
             SupplierDAO supplierDAO = new SupplierDAO(connection);
-            Supplier supplier = new Supplier("2", "1", "4", "1", 1);
-            Supplier supplier2 = new Supplier("2", "1", "1", "2", 1);
-            Supplier supplier3 = new Supplier("2", "1", "1", "1", 1);
+            //Supplier supplier = new Supplier("1", "1", "1", "1", 1);
+            //Supplier supplier2 = new Supplier("3", "2", "2", "2", 2);
+            //Supplier supplier3 = new Supplier("3", "3", "3", "3", 3);
 
-            supplierDAO.save(supplier);
-            supplierDAO.save(supplier2);
-            supplierDAO.save(supplier3);
+            //supplierDAO.save(supplier);
+            //supplierDAO.save(supplier2);
+            //supplierDAO.save(supplier3);
 
             System.out.println(supplierDAO.getEntities());
+
+            System.out.println(supplierDAO.findById(58));
+            System.out.println(supplierDAO.findById(59));
+            System.out.println(supplierDAO.findById(60));
+
+            //System.out.println(supplierDAO.getEntities());
         } catch (SQLException e) {
             e.printStackTrace();
         }
