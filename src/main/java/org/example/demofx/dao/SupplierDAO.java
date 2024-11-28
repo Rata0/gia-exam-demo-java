@@ -85,4 +85,21 @@ public final class SupplierDAO {
             }
         }
     }
+
+    public void update(int id, Supplier supplier) throws SQLException {
+        String sql = "UPDATE suppliers SET type = ?, name = ?, director = ?, phone = ?, rating = ? WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, supplier.getType());
+            preparedStatement.setString(2, supplier.getName());
+            preparedStatement.setString(3, supplier.getDirector());
+            preparedStatement.setString(4, supplier.getPhone());
+            preparedStatement.setInt(5, supplier.getRating());
+            preparedStatement.setInt(6, id);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Ошибка при обновлении");
+            }
+        }
+    }
 }

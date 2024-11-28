@@ -5,8 +5,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import org.example.demofx.dao.SupplierDAO;
+import org.example.demofx.model.Supplier;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class SecondController {
+    private DatabaseConnection databaseConnection;
+
     @FXML
     private Label sLabel;
 
@@ -55,5 +63,25 @@ public class SecondController {
         menuItem3.setOnAction((e) -> {
             mbType.setText(menuItem3.getText());
         });
+    }
+
+    @FXML
+    protected void saveUpdate() throws SQLException {
+        databaseConnection = new DatabaseConnection();
+        Connection connection = databaseConnection.getConnection();
+
+        int id = Integer.parseInt(sLabel.getText());
+        String type = mbType.getText();
+        String name = iName.getText();
+        String director = iDirector.getText();
+        String phone = iPhone.getText();
+        int rating = Integer.parseInt(iRating.getText());
+
+        Supplier supplier = new Supplier(type, name, director, phone, rating);
+        SupplierDAO supplierDAO = new SupplierDAO(connection);
+        supplierDAO.update(id, supplier);
+
+        Stage stage = (Stage) sLabel.getScene().getWindow();
+        stage.close();
     }
 }

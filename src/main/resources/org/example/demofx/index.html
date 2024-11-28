@@ -56,7 +56,6 @@
     const lc = document.querySelector(".list-container")
 
     const template = document.querySelector(".templater").content;
-    // const temp_div = template.querySelector("#document-fragment");
 
     suppliers.forEach(supplier => {
         const clone = document.importNode(template, true);
@@ -80,8 +79,7 @@
         const director = event.currentTarget.querySelector(".director").textContent;
         const phone = event.currentTarget.querySelector(".phone").textContent;
         const rating = event.currentTarget.querySelector(".rating").textContent;
-        //console.log(type);
-        helper.debuger(id);
+
         helper.openStage(id, type, name, director, phone, rating);
     }
 
