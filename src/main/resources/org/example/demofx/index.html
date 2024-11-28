@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body class="window">
+<div class="list-container">
+
+</div>
+<template class="templater">
+    <div class="list-item" data-attr="1">
+        <div class="list-item-left">
+            <h3><span class="type">Тип</span> | <span class="name">Наименование партнера</span></h3>
+            <p class="director">Директор</p>
+            <p class="phone">+7 223 322 23 32</p>
+            <p>Рейтинг: <span class="rating">10</span></p>
+        </div>
+        <div class="list-item-right">
+            10%
+        </div>
+    </div>
+</template>
+<script>
+    function ready () {
+        alert("command:ready");
+    }
+
+    ready();
+    const suppliers = [
+        {
+            "id": 1,
+            "type": "OOO",
+            "name": "Рога и копыта",
+            "director": "Ivan",
+            "phone": "34567890",
+            "rating": 4
+        },
+        {
+            "id": 2,
+            "type": "3AO",
+            "name": "sdgfsg",
+            "director": "Vova",
+            "phone": "4",
+            "rating": 2
+        },
+        {
+            "id": 3,
+            "type": "OAO",
+            "name": "ABOBA",
+            "director": "Petya",
+            "phone": "5467",
+            "rating": 0
+        }
+    ];
+    const lc = document.querySelector(".list-container")
+
+    const template = document.querySelector(".templater").content;
+    // const temp_div = template.querySelector("#document-fragment");
+
+    suppliers.forEach(supplier => {
+        const clone = document.importNode(template, true);
+        clone.querySelector(".list-item").setAttribute("data-attr", supplier.id);
+        clone.querySelector(".type").textContent = supplier.type;
+        clone.querySelector(".name").textContent = supplier.name;
+        clone.querySelector(".director").textContent = supplier.director;
+        clone.querySelector(".phone").textContent = supplier.phone;
+        clone.querySelector(".rating").textContent = supplier.rating;
+
+        lc.appendChild(clone);
+    })
+    const li = document.querySelectorAll(".list-item");
+    li.forEach(i => i.addEventListener("click", add));
+
+
+    function add (event) {
+        const id = event.currentTarget.getAttribute("data-attr");
+        const type = event.currentTarget.querySelector(".type").textContent;
+        const name = event.currentTarget.querySelector(".name").textContent;
+        const director = event.currentTarget.querySelector(".director").textContent;
+        const phone = event.currentTarget.querySelector(".phone").textContent;
+        const rating = event.currentTarget.querySelector(".rating").textContent;
+        //console.log(type);
+        helper.debuger(id);
+        helper.openStage(id, type, name, director, phone, rating);
+    }
+
+</script>
+</body>
+</html>

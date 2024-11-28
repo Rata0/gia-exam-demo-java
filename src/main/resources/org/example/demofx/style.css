@@ -1,0 +1,41 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.list-container {
+    border: 2px solid black;
+    padding: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.list-item {
+    border: 2px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-item:hover{
+    background-color: #22ac5b;
+}
+
+.list-item-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item-right {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+p{
+    margin: 5px;
+}
+
+h3{
+    margin: 6px;
+}

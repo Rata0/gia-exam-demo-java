@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.demofx.SecondController">
+
+    <Label fx:id="sLabel" text="Label" />
+    <Label text="Тип организации" />
+    <MenuButton fx:id="mbType" mnemonicParsing="false" text="Выбери тип организации...">
+        <items>
+            <MenuItem fx:id="menuItem3" mnemonicParsing="false" text="ПАО" />
+        </items>
+    </MenuButton>
+    <Label text="Наименование партнера" />
+    <TextField fx:id="iName" />
+    <Label text="Директор" />
+    <TextField fx:id="iDirector" />
+    <Label text="Телефон" />
+    <TextField fx:id="iPhone" />
+    <Label text="Рейтинг" />
+    <TextField fx:id="iRating" />
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+</VBox>
