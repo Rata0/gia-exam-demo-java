@@ -27,35 +27,11 @@
     }
 
     ready();
-    const suppliers = [
-        {
-            "id": 1,
-            "type": "OOO",
-            "name": "Рога и копыта",
-            "director": "Ivan",
-            "phone": "34567890",
-            "rating": 4
-        },
-        {
-            "id": 2,
-            "type": "3AO",
-            "name": "sdgfsg",
-            "director": "Vova",
-            "phone": "4",
-            "rating": 2
-        },
-        {
-            "id": 3,
-            "type": "OAO",
-            "name": "ABOBA",
-            "director": "Petya",
-            "phone": "5467",
-            "rating": 0
-        }
-    ];
     const lc = document.querySelector(".list-container")
 
     const template = document.querySelector(".templater").content;
+
+    const suppliers = JSON.parse(helper.convertSuppliersToJson());
 
     suppliers.forEach(supplier => {
         const clone = document.importNode(template, true);

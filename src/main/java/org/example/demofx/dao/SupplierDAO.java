@@ -29,14 +29,14 @@ public final class SupplierDAO {
 
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows == 0) {
-                throw new SQLException("Inserting supplier failed, no rows affected.");
+                throw new SQLException("Вставка поставщика не удалась, ни одна строка не затронута.");
             }
 
             try (var generatedKeys = preparedStatement.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     supplier.setId(generatedKeys.getInt(1));
                 } else {
-                    throw new SQLException("DB has not returned an id after saving an entity");
+                    throw new SQLException("БД не вернула идентификатор после сохранения сущности");
                 }
             }
         }
